@@ -1,3 +1,10 @@
+import pandas as pd
+# import descriptor calculator
+from rdkit import Chem
+from mordred import Calculator, descriptors
+from multiprocessing import freeze_support
+
+
 def SeekFeatures(data):
     """
         This function is used to extract chemical information from
