@@ -12,6 +12,7 @@ This package needs RDkit for molecular conversion and descriptor calculation, Pa
 * RDkit
 * Keras
 * Scikit-learn
+* Mordred
 
 
 
