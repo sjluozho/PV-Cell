@@ -1,0 +1,7 @@
+[run]
+branch = True
+source = PV_Cell/*
+include = PV_Cell/*
+omit = */setup.py
+[report]
+include = PV_Cell/*
