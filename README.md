@@ -1,5 +1,5 @@
 # OPVCM
-Predicting Organic Photovoltaic Cell Material (OPVCM) is a python package that can predict **Power Conversion Efficiency(pce)** of an organic material in PV-Cell based on user's input data. The predicted model is built based on correlations between *pce* and molecular features (bond type, functional group, heteroatom and etc.). All data is retrieved from The Harvard Clean Energy Project Database (HCEPDB).
+Predicting Organic Photovoltaic Cell Material (OPVCM) is a python package that can predict **Power Conversion Efficiency(pce)** of an organic material in PV_Cell based on user's input data. The predicted model is built based on correlations between *pce* and molecular features (bond type, functional group, heteroatom and etc.). All data is retrieved from The Harvard Clean Energy Project Database (HCEPDB).
 
 ## Use Cases
 1. Extract molecular features (functional groups, chemical bonding and etc.) from given ``SMILE_str``.
@@ -19,16 +19,16 @@ This package needs RDkit for molecular conversion and descriptor calculation, Pa
 ## Organization of the project
 The project has the following structure:
 
-    PV-Cell/
+    PV_Cell/
       |- README.md
-      |- PV-Cell/
+      |- PV_Cell/
          |- __init__.py
-         |- PV-Cell.py
+         |- PV_Cell.py
          |- due.py
          |- data/
             |- HCEPD_100K.csv
          |- tests/
-            |- test_PV-Cell.py
+            |- test_PV_Cell.py
       |- doc/
          |- Makefile
          |- conf.py
