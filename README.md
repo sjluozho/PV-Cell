@@ -1,20 +1,18 @@
-## PV_Cell
-[![Build Status](https://travis-ci.org/uwescience/PV_Cell.svg?branch=master)](https://travis-ci.org/uwescience/PV_Cell)
+### OPVCM
+Predicting Organic Photovoltaic Cell Material (OPVCM) is a python package that can predict **Power Conversion Efficiency(pce)** of an organic material in PV-Cell based on user's input data. The predicted model is built based on correlations between *pce* and molecular features (bond type, functional group, heteroatom and etc.). All data is retrieved from The Harvard Clean Energy Project Database (HCEPDB).
 
-Shablona is a template project for small scientific python projects. The
-recommendations we make here follow the standards and conventions of much of
-the scientific Python eco-system. Following these standards and recommendations
-will make it easier for others to use your code, and can make it easier for you
-to port your code into other projects and collaborate with other users of this
-eco-system.
+### Use Cases
+1. Extract molecular features (functional groups, chemical bonding and etc.) from given ``SMILE_str``.
+2. Use LASSO regression to screen siginificant predictors from molecular features above that contribute *pce*.
+3. Build up Neural Network to connect selected molecular featrues and *pce*.
 
-To use it as a template for your own project, you will need to follow the
-instructions at the [bottom of this page](#using-PV_Cell-as-a-template).
+### Package Requirements
+This package needs RDkit for molecular conversion and descriptor calculation, Pandas for data management, Scikit-learn for standardisation and data set splitting as well as Keras for the neural network building and training.
 
-First, let me explain all the different moving parts that make up a small
-scientific python project, and all the elements which allow us to effectively
-share it with others, test it, document it, and track its evolution.
-
+* RDkit
+* Keras
+* Scikit-learn
+* Mordred
 ### Organization of the  project
 
 The project has the following structure:
