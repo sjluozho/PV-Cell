@@ -44,7 +44,7 @@ def RRregress(X, y, a = None, b = None):
         modelRR.fit(X, y)
         coefs_RR.append(modelRR.coef_)
         error1_RR.append(mean_squared_error(y, modelRR.predict(X)))
-        if a and b is not None:
+        if a.any() and b.any() is not None:
             error2_RR.append(mean_squared_error(b, modelRR.predict(a)))
         else:
             error2_RR = None
