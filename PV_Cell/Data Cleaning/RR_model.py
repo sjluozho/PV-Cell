@@ -47,7 +47,7 @@ def RRregress(X, y, a = None, b = None):
             error2_RR.append(mean_squared_error(b, modelRR.predict(a)))
     return coefs_RR, lambdas_RR, error1_RR, error2_RR, modelRR
 
-def RRplot(X, y, a = None, b = None):
+def RR_plot(X, y, a = None, b = None):
     """ 
     
         This function returns regression of input data by Ridge regression 
