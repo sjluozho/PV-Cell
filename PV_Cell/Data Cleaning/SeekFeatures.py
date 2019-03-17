@@ -66,8 +66,8 @@ specific mordred.error.Missing message in the dataframe with a value 0.
 # replace the missing values to 0
     for column in wrong_column:
         i = 0
-        for item in features_df.iloc[:,column]:
+        for item in features_df_n.iloc[:,column]:
             if type(item) != np.float64 and type(item) != np.int64:
-                features_df.iloc[i,column] = 0
+                features_df_n.iloc[i,column] = 0
             i += 1
     return features_df_n
