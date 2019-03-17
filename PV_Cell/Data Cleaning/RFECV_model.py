@@ -24,16 +24,17 @@ def RFECVregress(X, y, estimator = 'rbf', scoring_method='explained_variance' ):
         of features given by this method.
     """
     
-    estimatorREFCV = SVR(estimator)
-    modelREFCV = RFECV(estimatorREFCV, step=5, scoring= scoring_method)
-    modelREFCV.fit(X, y)
+    estimatorRFECV = SVR(estimator)
+    modelRFECV = RFECV(estimatorRFECV, step=5, scoring= scoring_method)
+    modelRFECV.fit(X, y)
 
-    print("Optimal number of features : %d" % modelREFCV.n_features_)
-    print(modelREFCV.support_)
+    print("Optimal number of features : %d" % modelRFECV.n_features_)
+    print(modelRFECV.support_)
 
     # Plot number of features VS. cross-validation scores
     plt.figure()
     plt.xlabel("Number of features selected")
     plt.ylabel("Cross validation score")
-    plt.plot(range(1, len(modelREFCV.grid_scores_) + 1), modelREFCV.grid_scores_)
+    plt.plot(range(1, len(modelRFECV.grid_scores_) + 1), modelRFECV.grid_scores_)
     plt.show()
+    return modelRFECV
