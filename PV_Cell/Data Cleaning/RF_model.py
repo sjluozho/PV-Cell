@@ -9,7 +9,8 @@ def RFregress(X, y):
     
         This function returns regression of input data by Random Forest 
         method. Need to call
-    Attribute:
+        
+    Attributes:
         X: an array or array-like predictors. It should be scaled by
            StandardScaler.
         y: an array or array-like target. It should has compatible dimension
