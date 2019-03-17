@@ -1,8 +1,10 @@
-import pandas as pd
 # import descriptor calculator
 from rdkit import Chem
 from mordred import Calculator, descriptors, error
 from multiprocessing import freeze_support
+# other modules used in this function
+import pandas as pd
+import numpy as np
 
 
 def ChemFeatures(data):
@@ -53,7 +55,7 @@ specific mordred.error.Missing message in the dataframe with a value 0.
 
     """
 # first locate the columns that contain missing values
-    feature_df_n = features_df
+    features_df_n = features_df
     type_series = features_df_n.dtypes
     wrong_column = []
     for col in range(len(type_series)):
