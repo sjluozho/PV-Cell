@@ -71,3 +71,13 @@ specific mordred.error.Missing message in the dataframe with a value 0.
                 features_df_n.iloc[i,column] = 0
             i += 1
     return features_df_n
+
+
+def seek_feature_with_replacement(data):
+    """
+    This function wrapps the three functions above, allowing users to extract features
+    and replace invalid features in one step.
+    """
+    features_df = ChemFeatures(data)
+    features_df_n = ReplaceMissing(features_df)
+    return features_df_n
