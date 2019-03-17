@@ -1,7 +1,7 @@
 import pandas as pd
 # import descriptor calculator
 from rdkit import Chem
-from mordred import Calculator, descriptors
+from mordred import Calculator, descriptors, error
 from multiprocessing import freeze_support
 
 
@@ -35,8 +35,8 @@ of missing values with location
     """
 # find the non-value entries.
     missing =[]
-    for i in range(f.shape[1]):
-        if type(features_df.loc[1][i]) == mordred.error.Missing:
+    for i in range(features_df.shape[1]):
+        if type(features_df.loc[1][i]) == error.Missing:
             missing.append(features_df.loc[1][i])
 
 # show examples of the non-value entries.
