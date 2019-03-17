@@ -1,5 +1,12 @@
 # Module for extracting ChemInfo
 from SeekFeatures import *
+from Processing import *
+
+# import Modules of all four regression models
+from sklearn.linear_model import Ridge
+from sklearn.linear_model import Lasso
+from RF_model import *
+from RFECV_model import *
 
 # other modules required in this function
 import numpy as np
@@ -7,52 +14,64 @@ import pandas as pd
 import matplotlib.pyplot as plt
 %matplotlib inline
 
-# Use StandardScaler to scale the features data
-from sklearn.preprocessing import StandardScaler
-features =[feature for feature in features_df.columns]
+def Selector(data, features_df, lam = [1e2, 1e2], n = 10, estimator = 'rbf', scoring_method='explained_variance'):
+    # split data into a train_set and test_Set
+    X_train, X_test, y_train, y_test = SampleProcessor(data, features_df, n = 10)
+    # regress by Ridge
+    modelRR = Ridge()
+    modelRR_lam = modelRR.set_params(alpha = lam[0])
+    # regress by LASSO
+    modelLASSO = Lasso()
+    modelLASSO_lam = modelLasso.set_params(alpha = lam[1])
+    # regress by Ramdon Forest
+    RF_train, RF_train_fit = RFregress(X_train, y_train)
+    RF_test, RF_test_fit = RFregress(X_test, y_test)
+    # regress by RFECV
+    modelRFECV = RFECVregress(X, y, estimator = 'rbf', scoring_method='explained_variance')
+    
+    # make parity plot
+    fig = plt.figure(figsize=(12, 12)) 
 
-# Use KFold as validation approach
-from sklearn.model_selection import train_test_split
-from sklearn.model_selection import KFold
-from sklearn.metrics import mean_squared_error
+    ax1 = plt.subplot(2, 2, 1)
+    #plt.xlim([0,50]);
+    #plt.ylim([0,50]);
+    plt.scatter(y_train, modelRR_lam.predict(X_train), label = 'Training')
+    plt.scatter(y_test, modelRR_lam.predict(X_test),color = 'r', label = 'Test')
+    plt.plot([0,10], [0,10], lw = 4,color = 'black')
+    plt.legend()
+    plt.xlabel('Actual Output')
+    plt.ylabel('Predicted Output')
+    plt.title('RR Parity Plot')
 
-# regression models
-from sklearn.linear_model import Ridge
+    ax2 = plt.subplot(2, 2, 2)
+    #plt.xlim([0,50]);
+    #plt.ylim([0,50]);
+    plt.scatter(y_train, modelLASSO_lam.predict(X_train), label = 'Training')
+    plt.scatter(y_test, modelLASSO_lam.predict(X_test), color = 'r', label = 'Test')
+    plt.plot([0,10], [0,10], lw = 4,color = 'black')
+    plt.legend()
+    plt.xlabel('Actual Output')
+    plt.ylabel('Predicted Output')
+    plt.title('RR Parity Plot')
 
-def Scale_sample(data, features_df):
-    """
-        This function is used to scale the features to zero mean 
-        and 1 standard deviation..
+    ax3= plt.subplot(2, 2, 3)
+    #plt.xlim([0,50]);
+    #plt.ylim([0,50]);
+    plt.scatter(y_train, RF_train_fit.predict(X_train), label = 'Training')
+    plt.scatter(y_test, RF_train_fit.predict(X_test), color = 'r', label = 'Test')
+    plt.plot([0,10], [0,10], lw = 4,color = 'black')
+    plt.legend()
+    plt.xlabel('Actual Output')
+    plt.ylabel('Predicted Output')
+    plt.title('RF Parity Plot')
 
-    Attributes:
-        data: original data. a pd.DataFrame.
-        features_df: a pd.DataFrame of features from SeekFeatures
-
-    """
-    features =[feature for feature in features_df.columns]
-    # Separating out the features
-    x = features_df.loc[:, features].values
-    # Our target is pce
-    y = data['pce'].values
-    sc = StandardScaler()
-    X = sc.fit_transform(x)
-    return X, y
-
-
-def KFold_sampling(X, y)
-    """
-        This function applies k-fold cross-validation to 
-        the process of sampling.
-
-    Attributes:
-        X: an array or array-like of features
-        y: an array or array-like of pce data
-
-    """
-    kf = KFold(n_splits = 10, shuffle = True)
-    for train_index, test_index in kf.split(X):
-        X_train, X_test = X[train_index], X[test_index]
-        y_train, y_test = y[train_index], y[test_index]
-    return X_train, X_test, y_train, y_test
-
-
+    ax4 = plt.subplot(2, 2, 4)
+    #plt.xlim([0,50]);
+    #plt.ylim([0,50]);
+    plt.scatter(y_train, modelRFECV.predict(X_train), label = 'Training')
+    plt.scatter(y_test, modelRFECV.predict(X_test), color = 'r', label = 'Test')
+    plt.plot([0,10], [0,10], lw = 4, color = 'black')
+    plt.legend()
+    plt.xlabel('Actual Output')
+    plt.ylabel('Predicted Output')
+    plt.title('RFECV Parity Plot')
