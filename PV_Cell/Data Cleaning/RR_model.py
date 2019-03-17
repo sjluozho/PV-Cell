@@ -1,31 +1,75 @@
 import numpy as np
+
 # regression models
 from sklearn.linear_model import Ridge
+from sklearn.metrics import mean_squared_error
+
+# plotting package
+import matplotlib.pyplot as plt
 
 
-def RRregress(X_train, X_test, y_train, y_test):
+def RRregress(X, y, a = None, b = None):
+    """ 
     
+        This function returns regression of input data by Ridge regression
+        method.
+    Attribute:
+        X: an array or array-like predictors. It should be scaled by
+           StandardScaler.
+        y: an array or array-like target. It should has compatible dimension
+           with input X.
+        **kwarg: input a different set of data. *Format* a = X_test, b = y_test.
+
+    Returns:
+        coefs_RR: a 2D list of coefficients from RR with different lambdas
+        lambdas_RR: a list of lambdas used in this RR
+        error1_RR: MSE of prediction from first input set (X, y)
+        error2_RR: MSE of prediction from second input set (a, b). Return as None
+                   if a and b are not defined.
+        modelRR: modelRR = Ridge(), the Ridge model command
+    """
+
     # RR vs lambda 
     coefs_RR = []
-    train_error_RR = []
-    test_error_RR = []
+    error1_RR = []
+    error2_RR = []
     # Tunning parameter(lambda)
     lambdas_RR = np.logspace(-4,8,200)
     modelRR = Ridge()
-
+        
     # loop over lambda values to determine the best by mse
     for l in lambdas_RR:
         modelRR.set_params(alpha = l)
-        modelRR.fit(X_train, y_train)
+        modelRR.fit(X, y)
         coefs_RR.append(modelRR.coef_)
-        train_error_RR.append(mean_squared_error(y_train, modelRR.predict(X_train)))
-        test_error_RR.append(mean_squared_error(y_test, modelRR.predict(X_test)))
-    return coefs_RR, lambdas_RR, test_error_RR, modelRR
+        error1_RR.append(mean_squared_error(y, modelRR.predict(X)))
+        if a and b is not None:
+            error2_RR.append(mean_squared_error(b, modelRR.predict(a)))
+    return coefs_RR, lambdas_RR, error1_RR, error2_RR, modelRR
 
-def RRplot(X_train, X_test, y_train, y_test):
-    coefs_RR, lambdas_RR, test_error_RR = RR_regress(X_train, X_test, y_train, y_test)
+def RRplot(X, y, a = None, b = None):
+    """ 
     
+        This function returns regression of input data by Ridge regression 
+        method.
+    Attribute:
+        X: an array or array-like predictors. It should be scaled by
+           StandardScaler.
+        y: an array or array-like target. It should has compatible dimension
+           with input X.
+        **kwarg: input a different set of data. *Format* a = X_test, b = y_test.
+                Pass if a and b are not defined.
+    Returns:
+        two plots: Left panel =  RR coefs vs lambda, R panel = MSE vs lambda
+    """
+
+    # call for first return
+    coefs_RR = RRregress(X, y, a, b)[0]
+    lambdas_RR = RRregress(X, y, a, b)[1]
+    error1_RR = RRregress(X, y, a, b)[2]
+    error2_RR = RRregress(X, y, a, b)[3]
     fig = plt.figure(figsize=(12, 4.8))
+    
 
     ax1 = plt.subplot(1, 2, 1)
     plt.plot(lambdas_RR, coefs_RR)
@@ -36,8 +80,9 @@ def RRplot(X_train, X_test, y_train, y_test):
     plt.xlim(1e-4, 1e8)
 
     ax2 = plt.subplot(1, 2, 2)
-    plt.plot(lambdas_RR, train_error_RR, label = 'train error')
-    plt.plot(lambdas_RR, test_error_RR, label = 'test error')
+    plt.plot(lambdas_RR, error1_RR, label = 'train error')
+    if error2_RR is not None:
+        plt.plot(lambdas_RR, error2_RR, label = 'test error')
     plt.xscale('log')
     plt.xlabel('$\lambda$')
     plt.ylabel('MSE')
