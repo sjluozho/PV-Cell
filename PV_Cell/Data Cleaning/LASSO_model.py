@@ -43,8 +43,10 @@ def LASSOregress(X, y, a = None, b = None):
         modelLASSO.fit(X, y)
         coefs_LASSO.append(modelRR.coef_)
         error1_LASSO.append(mean_squared_error(y, modelLASSO.predict(X)))
-        if a and b is not None:
+        if a.any() and b.any() is not None:
             error2_LASSO.append(mean_squared_error(b, modelLASSO.predict(a)))
+        else:
+            error2_RR = None
     return coefs_LASSO, lambdas_RR, error1_RR, error2_RR, modelRR
 
 def LASSO_plot(X, y, a = None, b = None):
