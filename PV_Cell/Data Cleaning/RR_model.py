@@ -13,7 +13,8 @@ def RRregress(X, y, a = None, b = None):
     
         This function returns regression of input data by Ridge regression
         method.
-    Attribute:
+        
+    Attributes:
         X: an array or array-like predictors. It should be scaled by
            StandardScaler.
         y: an array or array-like target. It should has compatible dimension
