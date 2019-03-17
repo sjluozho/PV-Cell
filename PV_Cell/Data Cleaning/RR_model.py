@@ -45,6 +45,8 @@ def RRregress(X, y, a = None, b = None):
         error1_RR.append(mean_squared_error(y, modelRR.predict(X)))
         if a and b is not None:
             error2_RR.append(mean_squared_error(b, modelRR.predict(a)))
+        else:
+            error2_RR = None
     return coefs_RR, lambdas_RR, error1_RR, error2_RR, modelRR
 
 def RR_plot(X, y, a = None, b = None):
