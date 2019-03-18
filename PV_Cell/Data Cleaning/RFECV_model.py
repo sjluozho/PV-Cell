@@ -1,7 +1,7 @@
 from sklearn.feature_selection import RFECV
 from sklearn.svm import SVR
 
-
+# It seems only to be compatible with linear model.
 def RFECVregress(X, y, estimator = 'linear', scoring_method='explained_variance' ):
     """ 
     
