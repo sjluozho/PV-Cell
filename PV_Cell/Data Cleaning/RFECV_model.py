@@ -2,7 +2,7 @@ from sklearn.feature_selection import RFECV
 from sklearn.svm import SVR
 
 
-def RFECVregress(X, y, estimator = 'rbf', scoring_method='explained_variance' ):
+def RFECVregress(X, y, estimator = 'linear', scoring_method='explained_variance' ):
     """ 
     
         This function returns regression of input data by RFECV(recursive feature elimination
