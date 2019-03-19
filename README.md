@@ -1,10 +1,14 @@
-### OPVCM
-Predicting Organic Photovoltaic Cell Material (OPVCM) is a python package that can predict **Power Conversion Efficiency(pce)** of an organic material in PV-Cell based on user's input data. The predicted model is built based on correlations between *pce* and molecular features (bond type, functional group, heteroatom and etc.). All data is retrieved from The Harvard Clean Energy Project Database (HCEPDB).
+<img src="./docs/image/PV_Cell_Logo.png" width="350" class="center">
+
+
+
+PVC is a group of four who dream of contributing to the clean energy technology. We developed a python package that can predict **Power Conversion Efficiency(PCE)** of an organic material in PV-Cell based on user's input molecular structure. The predicted model is built based on correlations between *PCE* and molecular features (bond type, functional group, heteroatom and etc.). All data is retrieved from The Harvard Clean Energy Project Database (HCEPDB). As our slogan said "STRONG!", we aimed at developing a powerful tool that provides practical information towards synthesizing new organic materials for OPVC.
 
 ### Use Cases
 1. Extract molecular features (functional groups, chemical bonding and etc.) from given ``SMILE_str``.
-2. Use LASSO regression to screen siginificant predictors from molecular features above that contribute *pce*.
-3. Build up Neural Network to connect selected molecular featrues and *pce*.
+2. Use various regression models to screen siginificant predictors from molecular features above that contribute to *PCE*.
+3. Build up Artificial Neural Network(ANN) to connect selected molecular featrues and *pce*.
+4. Predict optimal structure that gives high PCE based on Terminal-Spacer-Core fragmented structures.
 
 ### Package Requirements
 This package needs RDkit for molecular conversion and descriptor calculation, Pandas for data management, Scikit-learn for standardisation and data set splitting as well as Keras for the neural network building and training.
@@ -13,6 +17,10 @@ This package needs RDkit for molecular conversion and descriptor calculation, Pa
 * Keras
 * Scikit-learn
 * Mordred
+
+All required software can be installed at the command line
+ * `pip install -r requirements.txt`
+ 
 ### Organization of the  project
 
 The project has the following structure:
@@ -52,54 +60,24 @@ experiment. It's not too important to know what it does, but if you are really
 interested, you can read all about it
 [here](http://arokem.github.io/2014-08-12-learn-optimization.html).
 
+
 ### Module code
 
-We place the module code in a file called `PV_Cell.py` in directory called
-`PV_Cell`. This structure is a bit confusing at first, but it is a simple way
-to create a structure where when we type `import PV_Cell as sb` in an
-interactive Python session, the classes and functions defined inside of the
-`PV_Cell.py` file are available in the `sb` namespace. For this to work, we
-need to also create a file in `__init__.py` which contains code that imports
-everything in that file into the namespace of the project:
+We place all the module codes in the directory called `PV_Cell`. It contains modules
+required for every step in the project, including: extracting chemical infomation, 
+vaious regression model, ANN model and visualization module. Please see README file in 
+the directory for more details. 
 
-    from .PV_Cell import *
-
-In the module code, we follow the convention that all functions are either
-imported from other places, or are defined in lines that precede the lines that
-use that function. This helps readability of the code, because you know that if
-you see some name, the definition of that name will appear earlier in the file,
-either as a function/variable definition, or as an import from some other module
-or package.
-
-In the case of the PV_Cell module, the main classes defined at the bottom of
-the file make use of some of the functions defined in preceding lines.
-
-Remember that code will be probably be read more times than it will be written.
-Make it easy to read (for others, but also for yourself when you come back to
-it), by following a consistent formatting style. We strongly recommend
-following the
-[PEP8 code formatting standard](https://www.python.org/dev/peps/pep-0008/), and
-we enforce this by running a code-linter called
-[`flake8`](http://flake8.pycqa.org/en/latest/), which automatically checks the
-code and reports any violations of the PEP8 standard (and checks for other
-  general code hygiene issues), see below.
 
 ### Project Data
 
-In this case, the project data is rather small, and recorded in csv
-files.  Thus, it can be stored alongside the module code.  Even if the
-data that you are analyzing is too large, and cannot be effectively
-tracked with github, you might still want to store some data for
-testing purposes.
-
-Either way, you can create a `PV_Cell/data` folder in which you can
-organize the data. As you can see in the test scripts, and in the
-analysis scripts, this provides a standard file-system location for
-the data at:
-
-    import os.path as op
-    import PV_Cell as sb
-    data_path = op.join(sb.__path__[0], 'data')
+All the data used in this project are placed in the directory `Database/`
+(https://github.com/sjluozho/PV_Cell/tree/master/Database)recorded in csv
+files. Users can call the data by this code:
+    *data = pd.read_csv('../Database/HCEPD_100K.csv')*
+In addition to the original data (*HCEPD_100K.csv*), we place some csv files that
+contains raw chemical features extracted from this 100K data, and also the ready-to-use one
+in `No_Missing_Value` folder.    
 
 
 ### Testing
@@ -209,32 +187,6 @@ following from the command line:
 
     make test
 
-### Styling
-
-It is a good idea to follow the PEP8 standard for code formatting. Common code
-formatting makes code more readable, and using tools such as `flake8` (which
-combines the tools `pep8` and `pyflakes`) can help make your code more readable,
-avoid extraneous imports and lines of code, and overall keep a clean project
-code-base.
-
-Some projects include `flake8` inside their automated tests, so that every pull
-request is examined for code cleanliness.
-
-In this project, we have run `flake8` most (but not all) files, on
-most (but not all) checks:
-
-```
-flake8 --ignore N802,N806 `find . -name *.py | grep -v setup.py | grep -v /doc/`
-```
-
-This means, check all .py files, but exclude setup.py and everything in
-directories named "doc". Do all checks except N802 and N806, which enforce
-lowercase-only names for variables and functions.
-
-The `Makefile` contains an instruction for running this command as well:
-
-    make flake8
-
 ### Documentation
 
 Documenting your software is a good idea. Not only as a way to communicate to
@@ -307,92 +259,10 @@ Much more information on packaging Python software can be found in the
 packaging](https://the-hitchhikers-guide-to-packaging.readthedocs.org).
 
 
-### Continuous integration
-
-Travis-CI is a system that can be used to automatically test every revision of
-your code directly from github, including testing of github pull requests,
-before they are merged into the `master` branch. This provides you with
-information needed in order to evaluate contrubutions made by others. It also
-serves as a source of information for others interested in using or contributing
-to your project about the degree of test coverage of your project.
-
-You will need a .travis.yml file in your repo. This file contains the
-configuration of your testing environment. This includes the different
-environments in which you will test the source code (for example, we test
-`PV_Cell` against Python 2.7, Python 3.3 and Python 3.4). It includes steps
-that need to be taken before installation of the software. For example,
-installation of the software dependencies. For `PV_Cell`, we use the
-[`Miniconda`](http://conda.pydata.org/miniconda.html) software distribution (not
-to be confused with [`Anaconda`](https://store.continuum.io/cshop/anaconda/),
-though they are similar and both produced by Continuum).
-
-For details on setting up Travis-CI with github, see Travis-CI's
-[getting started
-page](https://docs.travis-ci.com/user/getting-started/#To-get-started-with-Travis-CI%3A). To
-summarize:
-
-First, go to the Travis-CI [website](https://travis-ci.org/) and get a
-Travis user account, linked to your github user account.
-
-You will need to set up your github repo to talk to Travis (More explanation +
-pictures will come here).
-
-You will need to go back to travis-ci, and flip on the switch on that side as
-well.
-
-The travis output will also report to you about test coverage, if you set it up
-that way.
-
-You will start getting emails telling you the state of the testing suite on
-every pull request for the software, and also when you break the test suite on
-the `master` branch. That way, you can be pretty sure that the `master` is
-working (or at least know when it isn't...).
-
-You can also continuously test your code on a Windows system. This is done on
-another CI system called [Appveyor](http://www.appveyor.com/). In prinicple, it
-does something that is very similar to what Travis does: downloads your code,
-installs it on a Windows machine, with various versions of python, and runs the
-tests. Appveyor is controlled through another configuration file: the
-`appveyor.yml`. In addition to committing this file into the repository, you
-will need to activate Appveyor for your project. This is done by signing into
-the Appveyor interface with your Github account, clicking on the "projects" tab
-at the top of the page, then clicking on the "+" sign for "New project" and
-selecting the project you would like to add from the menu that appears (you
-might need to give Appveyor the permission to see projects in your Github
-account).
-
-### Distribution
-
-The main venue for distribution of Python software is the [Python
-Package Index](https://pypi.python.org/), or PyPI, also lovingly known
-as "the cheese-shop".
-
-To distribute your software on PyPI, you will need to create a user account on
-[PyPI](http://python-packaging-user-guide.readthedocs.org/en/latest/distributing/#register-your-project).
-It is recommended that you upload your software using
-[twine](http://python-packaging-user-guide.readthedocs.org/en/latest/distributing/#upload-your-distributions).
-
-Using Travis, you can automatically upload your software to PyPI,
-every time you push a tag of your software to github. The instructions
-on setting this up can be found
-[here](http://docs.travis-ci.com/user/deployment/pypi/). You will need
-to install the travis command-line interface
-
 ### Licensing
 
-License your code! A repository like this without a license maintains
-copyright to the author, but does not provide others with any
-conditions under which they can use the software. In this case, we use
-the MIT license. You can read the conditions of the license in the
-`LICENSE` file. As you can see, this is not an Apple software license
-agreement (has anyone ever actually tried to read one of those?). It's
-actually all quite simple, and boils down to "You can do whatever you
-want with my software, but I take no responsibility for what you do
-with my software"
-
-For more details on what you need to think about when considering
-choosing a license, see this
-[article](http://www.astrobetter.com/blog/2014/03/10/the-whys-and-hows-of-licensing-scientific-code/)!
+For more details on the licensing document, please read:
+[MIT](https://github.com/sjluozho/PV_Cell/blob/master/LICENSE)
 
 ### Getting cited
 
@@ -426,17 +296,3 @@ in some data, and creates a figure. Maybe this is *Figure 1* from some
 future article? You can see this notebook fully rendered
 [here](https://github.com/uwescience/PV_Cell/blob/master/scripts/Figure1.ipynb).
 
-
-### Git Configuration
-
-Currently there are two files in the repository which help working
-with this repository, and which you could extend further:
-
-- `.gitignore` -- specifies intentionally untracked files (such as
-  compiled `*.pyc` files), which should not typically be committed to
-  git (see `man gitignore`)
-- `.mailmap` -- if any of the contributors used multiple names/email
-  addresses or his git commit identity is just an alias, you could
-  specify the ultimate name/email(s) for each contributor, so such
-  commands as `git shortlog -sn` could take them into account (see
-  `git shortlog --help`)
