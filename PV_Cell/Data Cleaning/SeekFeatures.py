@@ -77,6 +77,10 @@ def seek_feature_with_replacement(data):
     """
     This function wrapps the three functions above, allowing users to extract features
     and replace invalid features in one step.
+    
+    Attributes:
+    data: array or array like of SMILES_str. Input data to be
+analysed
     """
     features_df = ChemFeatures(data)
     features_df_n = ReplaceMissing(features_df)

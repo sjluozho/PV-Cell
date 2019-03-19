@@ -35,19 +35,19 @@ def LASSOregress(X, y, a = None, b = None):
     error2_LASSO = []
     # Tunning parameter(lambda)
     lambdas_LASSO = np.logspace(-4,8,200)
-    modelLASSO = Lasso()
+    modelLASSO = Lasso(max_iter = 1e5)
         
     # loop over lambda values to determine the best by mse
     for l in lambdas_LASSO:
         modelLASSO.set_params(alpha = l)
         modelLASSO.fit(X, y)
-        coefs_LASSO.append(modelRR.coef_)
+        coefs_LASSO.append(modelLASSO.coef_)
         error1_LASSO.append(mean_squared_error(y, modelLASSO.predict(X)))
         if a.any() and b.any() is not None:
             error2_LASSO.append(mean_squared_error(b, modelLASSO.predict(a)))
         else:
-            error2_RR = None
-    return coefs_LASSO, lambdas_RR, error1_RR, error2_RR, modelRR
+            error2_LASSO = None
+    return coefs_LASSO, lambdas_LASSO, error1_LASSO, error2_LASSO, modelLASSO
 
 def LASSO_plot(X, y, a = None, b = None):
     """ 
@@ -82,9 +82,9 @@ def LASSO_plot(X, y, a = None, b = None):
     plt.xlim(1e-4, 1e8)
 
     ax2 = plt.subplot(1, 2, 2)
-    plt.plot(lambdas_RR, error1_LASSO, label = 'train error')
-    if error2_RR is not None:
-        plt.plot(lambdas_RR, error2_LASSO, label = 'test error')
+    plt.plot(lambdas_LASSO, error1_LASSO, label = 'train error')
+    if error2_LASSO is not None:
+        plt.plot(lambdas_LASSO, error2_LASSO, label = 'test error')
     plt.xscale('log')
     plt.xlabel('$\lambda$')
     plt.ylabel('MSE')

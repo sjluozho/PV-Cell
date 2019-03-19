@@ -1,8 +1,10 @@
 from sklearn.feature_selection import RFECV
 from sklearn.svm import SVR
 
+import matplotlib.pyplot as plt
+
 # It seems only to be compatible with linear model.
-def RFECVregress(X, y, estimator = 'linear', scoring_method='explained_variance' ):
+def RFECVregress(X, y, step = 5, estimator = 'linear', scoring_method='explained_variance' ):
     """ 
     
         This function returns regression of input data by RFECV(recursive feature elimination
