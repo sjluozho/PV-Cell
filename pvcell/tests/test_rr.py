@@ -8,7 +8,7 @@ import seekfeatures as sf
 
 
 def test_rr_regress():
-    data = pd.read_csv('../../Database/HCEPD_100K.csv')
+    data = pd.read_csv('HCEPD_100K.csv')
     data = data.head(10)
     features_df = sf.seek_feature_with_replacement(data['SMILES_str'])
     X, y = processing.scale_sample(data, features_df)
