@@ -91,7 +91,7 @@ dependencies:
   - pysocks=1.6.8
   - python=3.7.1
   - python-dateutil=2.7.5
-  - python.app=2
+  #- python.app=2
   - pytz=2018.9
   - pywavelets=1.0.1
   - pyzmq=17.1.2
