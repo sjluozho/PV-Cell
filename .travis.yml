@@ -15,6 +15,6 @@ script:
   | grep -v /doc/ | grep -v /data/`
 - mkdir for_test
 - cd for_test
-- py.test --pyargs sspinn --cov-report term-missing --cov=pv_cell
+- py.test --pyargs pv_cell --cov-report term-missing --cov=pv_cell
 after_success:
 - coveralls
