@@ -5,7 +5,7 @@ sys.path.append("..")
 
 
 def test_scale_sample():
-    data = pd.read_csv('../../Database/HCEPD_100K.csv')
+    data = pd.read_csv('HCEPD_100K.csv')
     data = data.head(5)
     import seekfeatures as sf
     features_df = sf.chem_features(data['SMILES_str'])
@@ -19,7 +19,7 @@ def test_scale_sample():
 
 
 def test_kfold_sampling():
-    data = pd.read_csv('../../Database/HCEPD_100K.csv')
+    data = pd.read_csv('HCEPD_100K.csv')
     data = data.head(10)
     import seekfeatures as sf
     features_df = sf.chem_features(data['SMILES_str'])
