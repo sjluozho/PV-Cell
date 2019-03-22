@@ -47,7 +47,7 @@ dependencies:
   - jupyter_core=4.4.0
   - libboost=1.67.0
   #- libcxx=4.0.1
-  - libcxxabi=4.0.1
+  #- libcxxabi=4.0.1
   - libedit=3.1.20170329
   - libffi=3.2.1
   - libgfortran=3.0.1
