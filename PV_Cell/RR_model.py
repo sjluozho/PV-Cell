@@ -14,20 +14,27 @@ def RRregress(X, y, a = None, b = None):
         This function returns regression of input data by Ridge regression
         method.
         
-    Attributes:
-        X: an array or array-like predictors. It should be scaled by
-           StandardScaler.
-        y: an array or array-like target. It should has compatible dimension
-           with input X.
-        **kwarg: input a different set of data. *Format* a = X_test, b = y_test.
+    Parameters
+    ----------
+        X: an array or array-like predictors. 
+           It should be scaled by StandardScaler.
+        y: an array or array-like target. 
+           It should has compatible dimension with input X.
+        a, b: an array or array-like, optional.
+           another set of data, such as a = X_test, b = y_test.
 
-    Returns:
-        coefs_RR: a 2D list of coefficients from RR with different lambdas
-        lambdas_RR: a list of lambdas used in this RR
-        error1_RR: MSE of prediction from first input set (X, y)
-        error2_RR: MSE of prediction from second input set (a, b). Return as None
-                   if a and b are not defined.
-        modelRR: modelRR = Ridge(), the Ridge model command
+    Returns
+    -------
+        coefs_RR: list. 
+                     a list of coefficients from RR with different lambdas
+        lambdas_RR: list.
+                       a list of lambdas used in this RR
+        error1_RR: list.
+                      a list of MSE of prediction from first input set (X, y)
+        error2_RR: list.
+                      a list of MSE of prediction from second input set (a, b). Return as None
+                      if a and b are not defined.
+        modelRR: modelRR = Ridge(), the LASSO model command
     """
 
     # RR vs lambda 
@@ -53,17 +60,20 @@ def RRregress(X, y, a = None, b = None):
 def RR_plot(X, y, a = None, b = None):
     """ 
     
-        This function returns regression of input data by Ridge regression 
+        This function returns regression of input data by RR regression 
         method.
-    Attribute:
-        X: an array or array-like predictors. It should be scaled by
-           StandardScaler.
-        y: an array or array-like target. It should has compatible dimension
-           with input X.
-        **kwarg: input a different set of data. *Format* a = X_test, b = y_test.
-                Pass if a and b are not defined.
+    Parameters
+    ----------
+        X: an array or array-like predictors. 
+           It should be scaled by StandardScaler.
+        y: an array or array-like target. 
+           It should has compatible dimension with input X.
+        a, b: an array or array-like, optional.
+           another set of data, such as a = X_test, b = y_test.
+
     Returns:
-        two plots: Left panel =  RR coefs vs lambda, R panel = MSE vs lambda
+        two matplotlib plots.
+        Left panel =  RRcoefs vs lambda, R panel = MSE vs lambda
     """
 
     # call for first return

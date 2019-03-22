@@ -10,18 +10,24 @@ def RFECVregress(X, y, step = 5, estimator = 'linear', scoring_method='explained
         This function returns regression of input data by RFECV(recursive feature elimination
         by cross-validation).
         
-    Attributes:
-        X: an array or array-like predictors. It should be scaled by
-           StandardScaler.
-        y: an array or array-like target. It should has compatible dimension
-           with input X.
-        estimator: Specifies the kernel type to be used in the algorithm.
-                  'Radial basis function' as default.
-        scoring_method: scoring_method for cross-validation. 'explained_variance'
+    Parameters
+    ----------
+        X: an array or array-like predictors. 
+           It should be scaled by StandardScaler.
+        y: an array or array-like target. 
+           It should has compatible dimension with input X.
+        a, b: an array or array-like, optional.
+           another set of data, such as a = X_test, b = y_test.
+        estimator: str.
+                   Specifies the kernel type to be used in the algorithm.
+                   'Radial basis function' as default.
+        scoring_method: str.
+                        scoring_method for cross-validation. 'explained_variance'
                         as default. For more availalbe methods, refer to :
             https://scikit-learn.org/stable/modules/model_evaluation.html
 
     Returns:
+        a matplotlib plot.
         A plot of cross_val score vs number of features selected. And optimal number
         of features given by this method.
     """

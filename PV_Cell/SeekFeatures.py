@@ -12,10 +12,15 @@ def ChemFeatures(data):
         This function is used to extract chemical information from
 molecular structures in the form of Smiles_str.
 
-    Attributes:
-        data: array or array like of SMILES_str. Input data to be
-analysed
+    Parameters
+    ----------
+        data: array or array like of SMILES_str. 
+              Input data to be analysed
 
+    Returns
+    ----------
+        features_df: pd.DataFrame
+                     a dataframe of features extracted from input SMILES_Str.
     """
     mols = [Chem.MolFromSmiles(mol) for mol in data]
     freeze_support()
@@ -31,9 +36,15 @@ def Missingvaluelist(features_df):
         This function loops through the dataframe and returns a list
 of missing values with location
 
-    Attributes:
-        features_df: a pd.DataFrame from the function ChemFeatures.
+    Parameters
+    ----------
+        features_df: pd.DataFrame
+                     a dataframe of features extracted from ChemFeatures.
 
+    Returns
+    ----------
+        missing: an array or array like.
+                 a dataframe of features extracted from input SMILES_Str.
     """
 # find the non-value entries.
     missing =[]
@@ -50,9 +61,16 @@ def ReplaceMissing(features_df):
         This function automatically replaces all non-value entries(marked as
 specific mordred.error.Missing message in the dataframe with a value 0.
 
-    Attributes:
-        features_df: a pd.DataFrame containing features info of all molecules
+    Parameters
+    ----------
+        features_df: pd.DataFrame
+                     a dataframe of features extracted from ChemFeatures.
 
+    Returns
+    ----------
+        features_df_n: pd.DataFrame
+                       a dataframe of features with all missing values replaced
+                       by 0.
     """
 # first locate the columns that contain missing values
     features_df_n = features_df
@@ -78,9 +96,17 @@ def seek_feature_with_replacement(data):
     This function wrapps the three functions above, allowing users to extract features
     and replace invalid features in one step.
     
-    Attributes:
-    data: array or array like of SMILES_str. Input data to be
-analysed
+    Parameters
+    ----------
+        data: array or array like of SMILES_str. 
+              Input data to be analysed
+
+    Returns
+    ----------
+        features_df_n: pd.DataFrame
+                       a dataframe of features with all missing values replaced
+                       by 0.
+
     """
     features_df = ChemFeatures(data)
     features_df_n = ReplaceMissing(features_df)

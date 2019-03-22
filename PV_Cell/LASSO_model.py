@@ -62,15 +62,18 @@ def LASSO_plot(X, y, a = None, b = None):
     
         This function returns regression of input data by LASSO regression 
         method.
-    Attribute:
-        X: an array or array-like predictors. It should be scaled by
-           StandardScaler.
-        y: an array or array-like target. It should has compatible dimension
-           with input X.
-        **kwarg: input a different set of data. *Format* a = X_test, b = y_test.
-                Pass if a and b are not defined.
+    Parameters
+    ----------
+        X: an array or array-like predictors. 
+           It should be scaled by StandardScaler.
+        y: an array or array-like target. 
+           It should has compatible dimension with input X.
+        a, b: an array or array-like, optional.
+           another set of data, such as a = X_test, b = y_test.
+
     Returns:
-        two plots: Left panel =  LASSO coefs vs lambda, R panel = MSE vs lambda
+        two matplotlib plots.
+        Left panel =  LASSO coefs vs lambda, R panel = MSE vs lambda
     """
 
     # call for first return
