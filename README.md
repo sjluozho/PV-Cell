@@ -26,9 +26,9 @@ The project has the following structure:
 
     PV_Cell/
       |- README.md
-      |- pv_cell/
+      |- pvcell/
          |- __init__.py
-         |- pv_cell.py
+         |- pvcell.py
          |- due.py
          |- data/
             |- ...
@@ -43,7 +43,7 @@ The project has the following structure:
             |- ...
             |- ipynb/
       |- examples/
-         |-pv_cell.ipynb/
+         |-pvcell.ipynb/
       |- setup.py
       |- .travis.yml
       |- .mailmap
@@ -58,7 +58,7 @@ The project has the following structure:
 
 ## Module code
 
-We place all the module codes in the directory called `pv_cell`. It contains modules
+We place all the module codes in the directory called `pvcell`. It contains modules
 required for every step in the project, including: extracting chemical infomation, 
 vaious regression model, ANN model and visualization module. Please see README file in 
 the directory for more details. 
