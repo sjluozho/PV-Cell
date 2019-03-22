@@ -7,4 +7,4 @@
 
 ## Components
 
-<img src="/image/components.png" width="350" class="center">
+<img src="./image/components.png" width="350" class="center">
