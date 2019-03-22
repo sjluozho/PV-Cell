@@ -4,7 +4,7 @@ sys.path.append("..")
 
 
 def test_chemfeatures():
-    data = pd.read_csv('../../Database/HCEPD_100K.csv')
+    data = pd.read_csv('HCEPD_100K.csv')
     data = data.head(5)
     import seekfeatures as sf
     generated_features = sf.chem_features(data['SMILES_str'])
@@ -14,7 +14,7 @@ def test_chemfeatures():
 
 
 def test_missingvaluelist():
-    data = pd.read_csv('../../Database/HCEPD_100K.csv')
+    data = pd.read_csv('HCEPD_100K.csv')
     data = data.head(5)
     import seekfeatures as sf
     generated_features = sf.chem_features(data['SMILES_str'])
@@ -25,7 +25,7 @@ def test_missingvaluelist():
 
 
 def test_replacemissing():
-    data = pd.read_csv('../../Database/HCEPD_100K.csv')
+    data = pd.read_csv('HCEPD_100K.csv')
     data = data.head(5)
     import seekfeatures as sf
     generated_features = sf.chem_features(data['SMILES_str'])
