@@ -5,7 +5,7 @@ sys.path.append("..")
 
 
 def test_lasso_regress():
-    data = pd.read_csv('../../Database/HCEPD_100K.csv')
+    data = pd.read_csv('HCEPD_100K.csv')
     data = data.head(10)
     import seekfeatures as sf
     features_df = sf.seek_feature_with_replacement(data['SMILES_str'])
