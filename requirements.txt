@@ -2,3 +2,8 @@ numpy
 scipy
 matplotlib
 pandas
+mordred
+sklearn
+seaborn
+keras
+rdkit

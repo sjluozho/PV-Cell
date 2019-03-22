@@ -2,6 +2,7 @@ from sklearn.feature_selection import RFECV
 from sklearn.svm import SVR
 
 import matplotlib.pyplot as plt
+import seaborn as sns
 
 
 # It seems only to be compatible with linear model.
@@ -17,9 +18,6 @@ def rfecv_regress(X, y, step=5, estimator='linear',
         X: an array or array-like predictors.
            It should be scaled by StandardScaler.
         y: an array or array-like target.
-           It should has compatible dimension with input X.
-        a, b: an array or array-like, optional.
-           another set of data, such as a = X_test, b = y_test.
         estimator: str.
                    Specifies the kernel type to be used in the algorithm.
                    'Radial basis function' as default.
@@ -50,3 +48,50 @@ def rfecv_regress(X, y, step=5, estimator='linear',
              modelRFECV.grid_scores_)
     plt.show()
     return modelRFECV
+
+def snsplot(X,y,features_df):
+    """
+
+        This function returns feature coef plot by seanborn.
+
+    Parameters
+    ----------
+        X: an array or array-like predictors.
+           It should be scaled by StandardScaler.
+        y: an array or array-like target.
+           It should has compatible dimension with input X.
+        features_df: pd.DataFrame.
+                     feature dataframe.
+
+    Returns:
+        a seaborn plot.
+        A plot that shows features and their corresponding coef.
+    """
+
+    modelRFECV = rfecv_regress(X, y)
+    RFECVrank = modelRFECV.ranking_
+    features60 = pd.DataFrame({'Feature':features_df.columns.values,
+                               'Rank':RFECVrank}).sort_values('Rank')
+    features_title = features60.Feature[0:60].values
+
+    # Compile into a dataframe
+    RFECV_df = pd.DataFrame()
+    RFECV_df['coef'] = coef_list
+    RFECV_df['Feature'] = [x for x in features_title]
+
+    # Put the mean scores into a Pandas dataframe
+    meanplot = pd.DataFrame({'Feature':RFECV_df.Feature,
+                             'Coef':RFECV_df.coef})
+
+    # Sort the dataframe
+    meanplot = meanplot.sort_values('Coef', ascending=False)
+
+    # Plot by seaborn 
+    sns.set(font_scale=2)
+    sns.set_style('whitegrid') 
+    coef_plot = sns.factorplot(y = 'Coef' , x = 'Feature',
+                               data = meanplot, kind = "bar", 
+                               size = 14, aspect = 1.9, orient = "v",
+                               palette = 'coolwarm')
+    coef_plot.set_xticklabels(rotation = 90, size = 20)
+    coef_plot.set_yticklabels(size = 20)
