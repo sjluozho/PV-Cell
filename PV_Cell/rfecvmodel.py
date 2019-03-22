@@ -7,7 +7,7 @@ import seaborn as sns
 
 # It seems only to be compatible with linear model.
 def rfecv_regress(X, y, step=5, estimator='linear',
-                 scoring_method='explained_variance'):
+                  scoring_method='explained_variance'):
     """
 
         This function returns regression of input data by RFECV(recursive
@@ -49,7 +49,8 @@ def rfecv_regress(X, y, step=5, estimator='linear',
     plt.show()
     return modelRFECV
 
-def snsplot(X,y,features_df):
+
+def snsplot(X, y, features_df):
     """
 
         This function returns feature coef plot by seanborn.
@@ -70,8 +71,8 @@ def snsplot(X,y,features_df):
 
     modelRFECV = rfecv_regress(X, y)
     RFECVrank = modelRFECV.ranking_
-    features60 = pd.DataFrame({'Feature':features_df.columns.values,
-                               'Rank':RFECVrank}).sort_values('Rank')
+    features60 = pd.DataFrame({'Feature': eatures_df.columns.values,
+                               'Rank': RFECVrank}).sort_values('Rank')
     features_title = features60.Feature[0:60].values
 
     # Compile into a dataframe
@@ -80,18 +81,18 @@ def snsplot(X,y,features_df):
     RFECV_df['Feature'] = [x for x in features_title]
 
     # Put the mean scores into a Pandas dataframe
-    meanplot = pd.DataFrame({'Feature':RFECV_df.Feature,
-                             'Coef':RFECV_df.coef})
+    meanplot = pd.DataFrame({'Feature': RFECV_df.Feature,
+                             'Coef': RFECV_df.coef})
 
     # Sort the dataframe
     meanplot = meanplot.sort_values('Coef', ascending=False)
 
-    # Plot by seaborn 
+    # Plot by seaborn
     sns.set(font_scale=2)
-    sns.set_style('whitegrid') 
-    coef_plot = sns.factorplot(y = 'Coef' , x = 'Feature',
-                               data = meanplot, kind = "bar", 
-                               size = 14, aspect = 1.9, orient = "v",
-                               palette = 'coolwarm')
-    coef_plot.set_xticklabels(rotation = 90, size = 20)
-    coef_plot.set_yticklabels(size = 20)
+    sns.set_style('whitegrid')
+    coef_plot = sns.factorplot(y='Coef', x='Feature',
+                               data=meanplot, kind="bar",
+                               size=14, aspect=1.9, orient="v",
+                               palette='coolwarm')
+    coef_plot.set_xticklabels(rotation=90, size=20)
+    coef_plot.set_yticklabels(size=20)
