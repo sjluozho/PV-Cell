@@ -18,8 +18,8 @@ install:
     - pip install numpy scipy matplotlib scikit-learn pandas
     - pip install jupyter notebook ipykernel
     - pip install tensorflow keras
-    - conda install -c conda-forge rdkit
-    - yes|pip install mordred
+    - yes|conda install -c conda-forge rdkit
+    - pip install mordred
     - python -m ipykernel install --user --name pvc_env --display-name "Python (pvc_env)"
 
 # command to run tests
