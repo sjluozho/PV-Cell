@@ -82,6 +82,10 @@ this project as an demonstration. Users may find useful instruction and illustra
 and procedures of our work.
 
 
+## Style
+Being checked by `pycodestyle` (formally named `pep8`), the whole package (`pvcell`) is `PEP8` compliant.
+
+
 ## Installation
 A `PV_Cell/version.py` contains all of the information needed for the
 installation and package dependencies.
