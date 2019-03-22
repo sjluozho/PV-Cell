@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 import sys
-sys.path.append("..//")
+sys.path.append("../")
 import rrmodel
 import processing
 import seekfeatures as sf

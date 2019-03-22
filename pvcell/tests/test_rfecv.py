@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import sklearn
 import sys
-sys.path.append("..//")
+sys.path.append("../")
 
 
 def test_rfecv_regress():
