@@ -17,18 +17,16 @@ seed = 42
 
 # dataset split
 def split():
-    feature_name = pd.read_csv('../PV_Cell/first_60_features.csv')
+    feature_name = pd.read_csv('../Database/first_60_features.csv')
     feature_1k = pd.read_csv(
                  '../Database/No_Missing_Value/features_25000_26000_R.csv')
     feature_name = feature_name.drop(columns='Unnamed: 0')
     selected_features = feature_name.values.reshape(1, -1)
     features = feature_1k[selected_features[0]]
     fe_list = features.columns.tolist()
-    data = pd.read_csv('../Database/HCEPD_100K.csv')
-    data = data[25000:26000]
 
     X = features[fe_list].values
-    Y = data[['pce']].values
+    Y = features[['pce']].values
 
     X_train_pn, X_test_pn, y_train, y_test = train_test_split(X, Y,
                                                               test_size=0.20,
