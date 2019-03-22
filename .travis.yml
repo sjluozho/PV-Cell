@@ -1,7 +1,7 @@
 language: python
 env:
   global:
-  - PIP_DEPS="pytest coveralls pytest-cov flake8"
+  - PIP_DEPS="pytest coveralls pytest-cov pep8"
 python:
 - '3.6'
 install:
@@ -11,10 +11,10 @@ branches:
   only:
   - master
 script:
-- flake8 `find . -name \*.py | grep -v setup.py | grep -v version.py | grep -v __init__.py
+- pep8 `find . -name \*.py | grep -v setup.py | grep -v version.py | grep -v __init__.py
   | grep -v /doc/ | grep -v /data/`
 - mkdir for_test
 - cd for_test
-- py.test --pyargs sspinn --cov-report term-missing --cov=sspinn
+- py.test --pyargs sspinn --cov-report term-missing --cov=pv_cell
 after_success:
 - coveralls
