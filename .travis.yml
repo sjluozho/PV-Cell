@@ -13,8 +13,6 @@ before_install:
 
 # command to install dependencies
 install:
-
-#Source conda environment and pip install:
     - conda create -n pvc_env python=3.6
     - source activate pvc_env
     - pip install numpy scipy matplotlib scikit-learn pandas
