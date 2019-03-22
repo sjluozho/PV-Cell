@@ -52,6 +52,10 @@ The project has the following structure:
       |- Makefile
 
 
+## Work Flow
+<img src="./docs/image/WORKFLOW.png" width="350" class="center">
+
+
 ## Module code
 
 We place all the module codes in the directory called `pv_cell`. It contains modules
