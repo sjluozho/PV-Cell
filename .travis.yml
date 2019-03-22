@@ -15,15 +15,17 @@ before_install:
 
 # command to install dependencies
 install:
-    - yes|conda create -n pvc_env python=3.6
-    - source activate pvc_env
-    - pip install numpy scipy matplotlib scikit-learn
-    - yes|conda install pandas
-    - pip install jupyter notebook ipykernel
-    - pip install tensorflow keras
-    - yes|conda install -c conda-forge rdkit
-    - pip install mordred
-    - python -m ipykernel install --user --name pvc_env --display-name "Python (pvc_env)"
+    - yes|conda env create -f environment.yml>/dev/null
+    - source activate pvc-env
+    - pip uninstall -y keras_applications
+    - pip uninstall -y keras_preprocessing
+    - pip uninstall -y keras
+    - pip uninstall -y tensorflow
+    - pip install --user tensorflow==1.10.0
+    - pip install --user keras_applications==1.0.6
+    - pip install --user keras_preprocessing==1.0.5
+    - pip install --user keras==2.2.4
+    - pip install --user coveralls
 
 # command to run tests
 script: nosetests
