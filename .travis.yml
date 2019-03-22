@@ -1,6 +1,8 @@
 language: python
+sudo: no
+
 python:
-  - "3.6"
+    - '3.6'
 
 #creating conda environment:
 before_install:
