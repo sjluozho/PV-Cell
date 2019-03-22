@@ -1,10 +1,32 @@
 language: python
 python:
   - "3.6"
+
+#creating conda environment:
+before_install:
+    #install miniconda
+    - wget http://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh -O miniconda.sh
+    - chmod +x miniconda.sh
+    - ./miniconda.sh -b -p "$PWD/miniconda/"
+    - export PATH="$PWD/miniconda/bin/:$PATH"
+    - yes|conda update conda>/dev/null
+
 # command to install dependencies
 install:
-  - travis_retry pip install $PIP_DEPS
-  - travis_retry pip install -r requirements.txt
-  - travis_retry pip install -e .
+
+#Source conda environment and pip install:
+    - conda create -n pvc_env python=3.6
+    - source activate pvc_env
+    - pip install numpy scipy matplotlib scikit-learn pandas
+    - pip install jupyter notebook ipykernel
+    - pip install tensorflow keras
+    - conda install -c conda-forge rdkit
+    - pip install mordred
+    - python -m ipykernel install --user --name pvc_env --display-name "Python (pvc_env)"
+
 # command to run tests
 script: nosetests
+
+after_success:
+    - coverage report
+    - coveralls
