@@ -5,9 +5,18 @@ import sys
 sys.path.append("..")
 
 
-def test_lasso_regress():
-    data = pd.read_csv('HCEPD_100K.csv')
-    data = data.head(10)
+def test_rf_regress():
+    str = [{'SMILES_str':'C1C=CC=C1c1cc2[se]c3c4occc4c4nsnc4c3c2cn1', 'pce':1},
+           {'SMILES_str':'C1C=CC=C1c1cc2[se]c3c4occc4c4nsnc4c3c2cn1', 'pce':1},
+           {'SMILES_str':'C1C=CC=C1c1cc2[se]c3c4occc4c4nsnc4c3c2cn1', 'pce':1},
+           {'SMILES_str':'C1C=CC=C1c1cc2[se]c3c4occc4c4nsnc4c3c2cn1', 'pce':1},
+           {'SMILES_str':'C1C=CC=C1c1cc2[se]c3c4occc4c4nsnc4c3c2cn1', 'pce':1},
+           {'SMILES_str':'C1C=CC=C1c1cc2[se]c3c4occc4c4nsnc4c3c2cn1', 'pce':1},
+           {'SMILES_str':'C1C=CC=C1c1cc2[se]c3c4occc4c4nsnc4c3c2cn1', 'pce':1},
+           {'SMILES_str':'C1C=CC=C1c1cc2[se]c3c4occc4c4nsnc4c3c2cn1', 'pce':1},
+           {'SMILES_str':'C1C=CC=C1c1cc2[se]c3c4occc4c4nsnc4c3c2cn1', 'pce':1},
+           {'SMILES_str':'C1C=CC=C1c1cc2[se]c3c4occc4c4nsnc4c3c2cn1', 'pce':1}]
+    data = pd.DataFrame(str)
     import seekfeatures as sf
     features_df = sf.seek_feature_with_replacement(data['SMILES_str'])
     import processing
