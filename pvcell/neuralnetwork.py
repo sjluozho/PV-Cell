@@ -26,7 +26,7 @@ def split():
     fe_list = features.columns.tolist()
 
     X = features[fe_list].values
-    Y = features[['pce']].values
+    Y = feature_1k[['pce']].values
 
     X_train_pn, X_test_pn, y_train, y_test = train_test_split(X, Y,
                                                               test_size=0.20,
