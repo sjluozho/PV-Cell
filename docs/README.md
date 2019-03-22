@@ -5,6 +5,6 @@
 3. Build up Artificial Neural Network(ANN) to connect selected molecular featrues and *PCE*.
 4. (Future Work)Predict optimal structure that gives high PCE based on Terminal-Spacer-Core fragmented structures.
 
-# Components
+## Components
 
-<img src="./docs/image/components.png" width="350" class="center">
+<img src="/image/components.png" width="350" class="center">
