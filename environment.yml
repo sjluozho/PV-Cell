@@ -6,7 +6,7 @@ channels:
 dependencies:
   - blas=1.0=mkl
   - boost=1.68.0
-  - boost-cpp=1.68.0=h6a4c333_1000
+  - boost-cpp=1.68.0
   - cairo=1.16.0=hc1b38c8_1000
   - certifi=2019.3.9=py36_0
   - freetype=2.9.1=h5db478b_1005
