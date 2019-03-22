@@ -9,12 +9,20 @@ from sklearn.model_selection import KFold
 def Scale_sample(data, features_df):
     """
         This function is used to scale the features to zero mean 
-        and 1 standard deviation..
+        and 1 standard deviation.
 
-    Attributes:
-        data: original data. a pd.DataFrame.
-        features_df: a pd.DataFrame of features from SeekFeatures
-
+    Parameters
+    -----------
+        data: pd.DataFrame.
+            original data to be processed.
+        features_df: pd.DataFrame.
+                    a dataframe of features from seekfeatures.py
+    Returns
+    -------
+        X: array.
+           a list of predictors processed by standard scaler.
+        y: array.
+           a list of target values(PCE from data)
     """
     features =[feature for feature in features_df.columns]
     # Separating out the features
@@ -31,10 +39,18 @@ def KFold_sampling(X, y, n = 10):
         This function applies k-fold cross-validation to 
         the process of sampling.
 
-    Attributes:
-        X: an array or array-like of features
-        y: an array or array-like of pce data
-
+    Parameters
+    -----------
+        X: an array or array-like.
+           a list of predictors processed by standard scaler.
+        y: an array or array-like.
+           a list of target values(PCE from data)
+    Returns
+    -------
+        X_train, X_test: array.
+               a list of predictor train-set and a list of test set.
+        y_train, y_test: array.
+               a list of predictor train-set and a list of test set.
     """
     kf = KFold(n_splits = 10, shuffle = True)
     for train_index, test_index in kf.split(X):
@@ -49,11 +65,21 @@ def SampleProcessor(data, features_df, n = 10):
         k-fold cross-validation the process of sampling. The data are
         scaled by StandardScaler.
 
-    Attributes:
-        data: original data. a pd.DataFrame.
-        features_df: a pd.DataFrame of features from SeekFeatures
-        n : a int64. n_splits of KFold method. 
-
+    Parameters
+    -----------
+        data: pd.DataFrame.
+            original data to be processed.
+        features_df: pd.DataFrame.
+                    a dataframe of features from seekfeatures.py
+        n : int. 
+            n_splits of KFold method. 
+    Returns
+    -------
+        X_train, X_test: array.
+               a list of predictor train-set and a list of test set.
+        y_train, y_test: array.
+               a list of predictor train-set and a list of test set.
+        
     """
     X, y = Scale_sample(data, features_df)
     X_train, X_test, y_train, y_test = KFold_sampling(X, y, n)

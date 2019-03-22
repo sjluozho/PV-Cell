@@ -13,19 +13,27 @@ def LASSOregress(X, y, a = None, b = None):
     
         This function returns regression of input data by LASSO regression
         method.
-    Attributes:
-        X: an array or array-like predictors. It should be scaled by
-           StandardScaler.
-        y: an array or array-like target. It should has compatible dimension
-           with input X.
-        **kwarg: input a different set of data. *Format* a = X_test, b = y_test.
+        
+    Parameters
+    ----------
+        X: an array or array-like predictors. 
+           It should be scaled by StandardScaler.
+        y: an array or array-like target. 
+           It should has compatible dimension with input X.
+        a, b: an array or array-like, optional.
+           another set of data, such as a = X_test, b = y_test.
 
-    Returns:
-        coefs_LASSO: a 2D list of coefficients from LASSO with different lambdas
-        lambdas_LASSO: a list of lambdas used in this LASSO
-        error1_LASSO: MSE of prediction from first input set (X, y)
-        error2_LASSO: MSE of prediction from second input set (a, b). Return as None
-                   if a and b are not defined.
+    Returns
+    -------
+        coefs_LASSO: list. 
+                     a list of coefficients from LASSO with different lambdas
+        lambdas_LASSO: list.
+                       a list of lambdas used in this LASSO
+        error1_LASSO: list.
+                      a list of MSE of prediction from first input set (X, y)
+        error2_LASSO: list.
+                      a list of MSE of prediction from second input set (a, b). Return as None
+                      if a and b are not defined.
         modelLASSO: modelLASSO = Lasso(), the LASSO model command
     """
 
