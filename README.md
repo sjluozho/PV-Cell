@@ -79,25 +79,8 @@ and procedures of our work.
 
 
 ## Installation
-
-For installation and distribution we will use the python standard
-library `distutils` module. This module uses a `setup.py` file to
-figure out how to install your software on a particular system. For a
-small project such as this one, managing installation of the software
-modules and the data is rather simple.
-
 A `PV_Cell/version.py` contains all of the information needed for the
-installation and for setting up the [PyPI
-page](https://pypi.python.org/pypi/PV_Cell) for the software. This
-also makes it possible to install your software with using `pip` and
-`easy_install`, which are package managers for Python software. The
-`setup.py` file reads this information from there and passes it to the
-`setup` function which takes care of the rest.
-
-Much more information on packaging Python software can be found in the
-[Hitchhiker's guide to
-packaging](https://the-hitchhikers-guide-to-packaging.readthedocs.org).
-
+installation and package dependencies.
 
 ## Licensing
 
