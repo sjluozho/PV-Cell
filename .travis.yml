@@ -13,15 +13,13 @@ before_install:
 
 # command to install dependencies
 install:
-    - conda create -n pvc_env python=3.6
-    - y
+    - yes|conda create -n pvc_env python=3.6
     - source activate pvc_env
     - pip install numpy scipy matplotlib scikit-learn pandas
     - pip install jupyter notebook ipykernel
     - pip install tensorflow keras
     - conda install -c conda-forge rdkit
-    - y
-    - pip install mordred
+    - yes|pip install mordred
     - python -m ipykernel install --user --name pvc_env --display-name "Python (pvc_env)"
 
 # command to run tests
