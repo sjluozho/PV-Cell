@@ -1,35 +1,34 @@
-def test_ChemFeatures():
-    """"""
-    import SeekFeatures
-    import pandas as pd
-    data = pd.read_csv('../Database/HCEPD_100K.csv') 
+import pandas as pd
+import sys
+sys.path.append("..")
+import seekfeatures as sf
+
+
+def test_chemfeatures():
+    data = pd.read_csv('../../Database/HCEPD_100K.csv')
     data = data.head(5)
-    generated_features = SeekFeatures.ChemFeatures(data['SMILES_str'])
+    generated_features = sf.chem_features(data['SMILES_str'])
     assert type(generated_features) == pd.core.frame.DataFrame
     assert len(generated_features) == len(data)
     return 0
 
 
-def test_Missingvaluelist():
-    import SeekFeatures
-    import pandas as pd
-    data = pd.read_csv('../Database/HCEPD_100K.csv')
+def test_missingvaluelist():
+    data = pd.read_csv('../../Database/HCEPD_100K.csv')
     data = data.head(5)
-    feature_df = SeekFeatures.ChemFeatures(data['SMILES_str'])
-    generated_list = SeekFeatures.Missingvaluelist(feature_df)
-    assert isinstance(generated_list, list) 
+    generated_features = sf.chem_features(data['SMILES_str'])
+    generated_list = sf.missing_value_list(generated_features)
+    assert isinstance(generated_list, list)
     assert 'mordred.error.Missing' in str(generated_list)
     return 0
 
 
-def test_ReplaceMissing():
-    import pandas as pd
-    import SeekFeatures
-    data = pd.read_csv('../Database/HCEPD_100K.csv')
+def test_replacemissing():
+    data = pd.read_csv('../../Database/HCEPD_100K.csv')
     data = data.head(5)
-    feature_df = SeekFeatures.ChemFeatures(data['SMILES_str'])
-    effective_feature = SeekFeatures.ReplaceMissing(feature_df)
+    generated_features = sf.chem_features(data['SMILES_str'])
+    effective_feature = sf.replace_missing(generated_features)
     assert type(effective_feature) == pd.core.frame.DataFrame
-    assert feature_df.shape == effective_feature.shape
-    assert SeekFeatures.Missingvaluelist(effective_feature) == []
+    assert generated_features.shape == effective_feature.shape
+    assert sf.missing_value_list(effective_feature) == []
     return 0
