@@ -4,13 +4,13 @@ channels:
   - defaults
   - anaconda
 dependencies:
-  - appnope=0.1.0
+  #- appnope=0.1.0
   - asn1crypto=0.24.0
   - backcall=0.1.0
   - blas=1.0
   - bleach=3.0.2
   - bzip2=1.0.6
-  - ca-certificates=2019.1.23
+  #- ca-certificates=2019.1.23
   - cairo=1.14.12
   - certifi=2018.11.29
   - cffi=1.11.5
@@ -28,7 +28,7 @@ dependencies:
   - fontconfig=2.13.0
   - freetype=2.9.1
   - gettext=0.19.8.1
-  - glib=2.56.2
+  #- glib=2.56.2
   - icu=58.2
   - idna=2.8
   - imageio=2.4.1
@@ -46,7 +46,7 @@ dependencies:
   - jupyter_console=6.0.0
   - jupyter_core=4.4.0
   - libboost=1.67.0
-  - libcxx=4.0.1
+  #- libcxx=4.0.1
   - libcxxabi=4.0.1
   - libedit=3.1.20170329
   - libffi=3.2.1
@@ -68,7 +68,7 @@ dependencies:
   - notebook=5.7.4
   - numpy-base=1.15.4
   - olefile=0.46
-  - openssl=1.1.1b
+  #- openssl=1.1.1b
   - pandoc=2.2.3.2
   - pandocfilters=1.4.2
   - parso=0.3.1
@@ -87,7 +87,7 @@ dependencies:
   - pycparser=2.19
   - pygments=2.3.1
   - pyopenssl=18.0.0
-  - pyqt=5.9.2
+  #- pyqt=5.9.2
   - pysocks=1.6.8
   - python=3.7.1
   - python-dateutil=2.7.5
@@ -96,7 +96,7 @@ dependencies:
   - pywavelets=1.0.1
   - pyzmq=17.1.2
   - qt=5.9.7
-  - qtconsole=4.4.3
+  #- qtconsole=4.4.3
   - rdkit=2018.09.2.0
   - readline=7.0
   - requests=2.21.0
@@ -107,13 +107,13 @@ dependencies:
   - seaborn=0.9.0
   - send2trash=1.5.0
   - setuptools=40.6.3
-  - sip=4.19.8
+  #- sip=4.19.8
   - six=1.12.0
   - sqlite=3.26.0
   - statsmodels=0.9.0
   - terminado=0.8.1
   - testpath=0.4.2
-  - tk=8.6.8
+  #- tk=8.6.8
   - toolz=0.9.0
   - tornado=5.1.1
   - traitlets=4.3.2
