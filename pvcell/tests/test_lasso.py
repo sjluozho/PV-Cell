@@ -34,8 +34,10 @@ def test_lasso_regress():
     import lassomodel
     coefs_LASSO, lambdas_LASSO, error1_LASSO, error2_LASSO, modelLASSO = \
         lassomodel.lasso_regress(X_train, y_train, a=X_test, b=y_test)
+    # The generated coefficients and error lists should all be symmetric.
     assert len(lambdas_LASSO) == len(error1_LASSO)
     assert len(coefs_LASSO) == len(error2_LASSO)
+    # The generated values should be handled in a list.
     assert isinstance(coefs_LASSO, list)
     assert isinstance(error1_LASSO, list)
     assert isinstance(error2_LASSO, list)

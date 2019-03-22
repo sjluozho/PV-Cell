@@ -37,6 +37,7 @@ def test_rfecv_regress():
                                           scoring_method='explained_variance')
     coef_list = [x for x in modelRFECV.estimator_.coef_[0]]
     assert isinstance(coef_list, list)
+    # There should be fewer features after selection.
     assert len(coef_list) < 1825
     assert isinstance(modelRFECV, sklearn.feature_selection.rfe.RFECV)
     return 0

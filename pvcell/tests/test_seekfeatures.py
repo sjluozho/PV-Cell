@@ -9,7 +9,9 @@ def test_chemfeatures():
     data = pd.DataFrame(str)
     import seekfeatures as sf
     generated_features = sf.chem_features(data['a'])
+    # The generated features should be handled in dataframe.
     assert type(generated_features) == pd.core.frame.DataFrame
+    # And has the same length as original data.
     assert len(generated_features) == len(data)
     return 0
 
@@ -34,5 +36,6 @@ def test_replacemissing():
     effective_feature = sf.replace_missing(generated_features)
     assert type(effective_feature) == pd.core.frame.DataFrame
     assert generated_features.shape == effective_feature.shape
+    # There should be no missing features after elimination.
     assert sf.missing_value_list(effective_feature) == []
     return 0

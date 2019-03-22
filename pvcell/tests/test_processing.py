@@ -20,8 +20,11 @@ def test_scale_sample():
     features_df = sf.chem_features(data['SMILES_str'])
     import processing
     X, y = processing.scale_sample(data, features_df)
+    # The generated x_set and y_set should be symmetric and have the
+    # same shape as original data.
     assert len(X) == len(y)
     assert len(X) == len(data)
+    # The generated sets should be handled in arrays.
     assert isinstance(X, np.ndarray)
     assert isinstance(y, np.ndarray)
     return 0
@@ -54,6 +57,7 @@ def test_kfold_sampling():
     import processing
     X, y = processing.scale_sample(data, features_df)
     X_train, X_test, y_train, y_test = processing.kfold_sampling(X, y, n=5)
+    # The generated sets should be symmetric.
     assert len(X_train) == len(y_train)
     assert len(X_test) == len(y_test)
     return 0
