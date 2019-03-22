@@ -6,4 +6,3 @@ mordred
 sklearn
 seaborn
 keras
-rdkit
