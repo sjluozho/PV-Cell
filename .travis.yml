@@ -15,7 +15,8 @@ before_install:
 install:
     - yes|conda create -n pvc_env python=3.6
     - source activate pvc_env
-    - pip install numpy scipy matplotlib scikit-learn pandas
+    - pip install numpy scipy matplotlib scikit-learn
+    - yes|conda install pandas
     - pip install jupyter notebook ipykernel
     - pip install tensorflow keras
     - yes|conda install -c conda-forge rdkit
