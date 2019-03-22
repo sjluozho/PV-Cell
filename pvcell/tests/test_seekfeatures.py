@@ -4,8 +4,8 @@ sys.path.append("../")
 
 
 def test_chemfeatures():
-    str = [{'a':'C1C=CC=C1c1cc2[se]c3c4occc4c4nsnc4c3c2cn1'},
-           {'a':'C1C=CC=C1c1cc2[se]c3c4occc4c4nsnc4c3c2cn1'}]
+    str = [{'a': 'C1C=CC=C1c1cc2[se]c3c4occc4c4nsnc4c3c2cn1'},
+           {'a': 'C1C=CC=C1c1cc2[se]c3c4occc4c4nsnc4c3c2cn1'}]
     data = pd.DataFrame(str)
     import seekfeatures as sf
     generated_features = sf.chem_features(data['a'])
@@ -15,8 +15,8 @@ def test_chemfeatures():
 
 
 def test_missingvaluelist():
-    str = [{'a':'C1C=CC=C1c1cc2[se]c3c4occc4c4nsnc4c3c2cn1'},
-           {'a':'C1C=CC=C1c1cc2[se]c3c4occc4c4nsnc4c3c2cn1'}]
+    str = [{'a': 'C1C=CC=C1c1cc2[se]c3c4occc4c4nsnc4c3c2cn1'},
+           {'a': 'C1C=CC=C1c1cc2[se]c3c4occc4c4nsnc4c3c2cn1'}]
     data = pd.DataFrame(str)
     import seekfeatures as sf
     generated_features = sf.chem_features(data['a'])
@@ -26,8 +26,8 @@ def test_missingvaluelist():
 
 
 def test_replacemissing():
-    str = [{'a':'C1C=CC=C1c1cc2[se]c3c4occc4c4nsnc4c3c2cn1'},
-           {'a':'C1C=CC=C1c1cc2[se]c3c4occc4c4nsnc4c3c2cn1'}]
+    str = [{'a': 'C1C=CC=C1c1cc2[se]c3c4occc4c4nsnc4c3c2cn1'},
+           {'a': 'C1C=CC=C1c1cc2[se]c3c4occc4c4nsnc4c3c2cn1'}]
     data = pd.DataFrame(str)
     import seekfeatures as sf
     generated_features = sf.chem_features(data['a'])
