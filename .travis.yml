@@ -15,7 +15,7 @@ before_install:
 
 # command to install dependencies
 install:
-    - yes|conda env create -f environment.yml
+    - yes|conda env create -f environment.yml>/dev/null
     - source activate pvcell
     - pip uninstall -y keras_applications
     - pip uninstall -y keras_preprocessing
