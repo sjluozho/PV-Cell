@@ -1,12 +1,9 @@
 import numpy as np
 import pandas as pd
 import sys
-sys.path.append("../")
-
-
-import seekfeatures as sf
-import processing
-import lassomodel
+from .. import seekfeatures as sf
+from .. import processing
+from .. import lassomodel
 
 
 def test_lasso_regress():
