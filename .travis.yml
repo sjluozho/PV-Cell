@@ -28,12 +28,10 @@ install:
 
  - conda install -q scikit-learn numpy scipy pandas jupyter matplotlib seaborn
  - conda install -q -c rdkit rdkit
- - conda install -q keras tensorflow
+ - conda install -q keras tensorflow nose
 
 script: 
- - which python
- - python import rdkit 
- #- py.test --pyargs pvcell 
+ - nosetests
 
 after_success:
  - coveralls
