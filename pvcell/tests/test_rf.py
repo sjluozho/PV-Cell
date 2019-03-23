@@ -1,13 +1,9 @@
 import pandas as pd
 import numpy as np
 import sklearn
-import sys
-sys.path.append("../")
-
-
-import seekfeatures as sf
-import processing
-import rfmodel
+from .. import seekfeatures as sf
+from .. import processing
+from .. import rfmodel
 
 
 def test_rf_regress():
