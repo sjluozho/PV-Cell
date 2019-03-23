@@ -50,7 +50,6 @@ def test_kfold_sampling():
            {'SMILES_str': 'C1C=CC=C1c1cc2[se]c3c4occc4c4nsnc4c3c2cn1',
             'pce': 1}]
     data = pd.DataFrame(str)
-    import seekfeatures as sf
     features_df = sf.chem_features(data['SMILES_str'])
     X, y = processing.scale_sample(data, features_df)
     X_train, X_test, y_train, y_test = processing.kfold_sampling(X, y, n=5)
