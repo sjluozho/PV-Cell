@@ -14,9 +14,7 @@ install:
 - travis_retry pip install -r requirements.txt
 - travis_retry conda install -c rdkit rdkit
 
-script: 
-- coverage report
+script: nosetests
 
 after_success:
-- ls -a
 - coveralls
