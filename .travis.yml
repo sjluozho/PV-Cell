@@ -1,6 +1,10 @@
 language: python
 sudo: false
 
+env:
+  global:
+  - PIP_DEPS="pytest coveralls pytest-cov flake8"
+
 python:
   - '3.6'
 
