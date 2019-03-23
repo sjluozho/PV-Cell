@@ -14,8 +14,7 @@ install:
 - travis_retry pip install -r requirements.txt
 - travis_retry conda install -c rdkit rdkit
 
-script:
-- py.test --pyargs battdeg --cov-report term-missing --cov=battdeg
+script: 
 - coverage report
 
 after_success:
