@@ -1,4 +1,5 @@
-from setuptools import setup
+from setuptools import setup, find_packages
+
 
 setup(name='pvcell',
       version='0.1.0',
@@ -6,7 +7,7 @@ setup(name='pvcell',
       url='https://github.com/sjluozho/PV_Cell',
       author='PVC Group, University of Washington (2019)',
       license='MIT',
-      packages=['pvcell'],
+      packages=find_packages(),
       install_requires=['keras==2.2.4',
                         'pandas==0.24.2',
                         'keras-applications==1.0.7',
