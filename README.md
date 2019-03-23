@@ -1,6 +1,8 @@
 <img src="./docs/image/PV_Cell_Logo.png" width="350" class="center">
 
 
+[![Build Status](https://travis-ci.org/sjluozho/PV_Cell.svg?branch=master)](https://travis-ci.org/sjluozho/PV_Cell)
+
 PVC is a group of four who dream of contributing to the clean energy technology. We developed a python package that can predict **Power Conversion Efficiency(PCE)** of an organic material in PV-Cell based on user's input molecular structure. The predicted model is built based on correlations between *PCE* and molecular features (bond type, functional group, heteroatom and etc.). All data is retrieved from The Harvard Clean Energy Project Database (HCEPDB). As our slogan said "STRONG!", we aimed at developing a powerful tool that provides practical information towards synthesizing new organic materials for OPVC.
 
 ## Use Cases
