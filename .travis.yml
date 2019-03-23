@@ -35,4 +35,5 @@ script:
  - nosetests
 
 after_success:
+ - coverage report
  - coveralls
