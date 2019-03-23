@@ -5,6 +5,11 @@ import sys
 sys.path.append("../")
 
 
+import seekfeatures as sf
+import processing
+import rfecvmodel
+
+
 def test_rfecv_regress():
     str = [{'SMILES_str': 'C1C=CC=C1c1cc2[se]c3c4occc4c4nsnc4c3c2cn1',
             'pce': 1},
@@ -27,11 +32,8 @@ def test_rfecv_regress():
            {'SMILES_str': 'C1C=CC=C1c1cc2[se]c3c4occc4c4nsnc4c3c2cn1',
             'pce': 6}]
     data = pd.DataFrame(str)
-    import seekfeatures as sf
     features_df = sf.seek_feature_with_replacement(data['SMILES_str'])
-    import processing
     X, y = processing.scale_sample(data, features_df)
-    import rfecvmodel
     modelRFECV = rfecvmodel.rfecv_regress(X, y, step=5,
                                           estimator='linear',
                                           scoring_method='explained_variance')
