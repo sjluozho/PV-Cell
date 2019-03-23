@@ -16,13 +16,18 @@ PVC is a group of four who dream of contributing to the clean energy technology.
 ## Package Requirements
 This package needs **RDkit** for molecular conversion and **Mordred** for descriptor calculation, **Pandas** for data management, **Scikit-learn** for standardisation and data set splitting, and **Keras** for the neural network building and training.
 
-* RDkit
-* Keras
-* Scikit-learn
-* Mordred
+* rdkit
+* keras
+* scikit-learn
+* mordred
 
 All required software can be installed at the command line
  * `pip install -r requirements.txt`
+ * `python setup.py install`
+`pip` does not provide installation for rdkit. In the same environment, users need to install rdkit by,
+ * `conda install -q -c rdkit rdkit`
+after rdkit is ready, install mordred by,
+ * `pip install mordred` 
  
 ## Organization of the  project
 
@@ -33,25 +38,27 @@ The project has the following structure:
       |- pvcell/
          |- __init__.py
          |- pvcell.py
-         |- due.py
-         |- data/
+         |- test/
             |- ...
-         |- tests/
-            |- ...
-      |- doc/
+      |- docs/
          |- Makefile
          |- conf.py
-         |- sphinxext/
+         |- image/
             |- ...
-         |- _static/
-            |- ...
-            |- ipynb/
+         |- tech_review.ppt/
+         |- poster.pdf/
       |- examples/
          |-pvcell.ipynb/
+      |- Reference/
+         |- README.md
+         |- literature.pdf/
+      |- .gitignore
       |- setup.py
       |- .travis.yml
       |- .mailmap
       |- appveyor.yml
+      |- requirements.txt
+      |- environment.yml
       |- LICENSE
       |- Makefile
 
