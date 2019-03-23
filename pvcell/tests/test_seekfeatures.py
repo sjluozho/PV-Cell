@@ -1,9 +1,5 @@
 import pandas as pd
-import sys
-sys.path.append("../")
-
-
-import seekfeatures as sf
+from .. import seekfeatures as sf
 
 
 def test_chemfeatures():
