@@ -26,7 +26,8 @@ install:
  - conda install -q -c rdkit rdkit
  - conda install -q keras tensorflow
 
-script: nosetests
+script: 
+ - pytest
 
 after_success:
-- coveralls
+ - coveralls
