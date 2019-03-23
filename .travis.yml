@@ -27,7 +27,7 @@ install:
  - conda install -q keras tensorflow
 
 script: 
- - pytest
+ - py.test --pyargs pvcell --cov-report term-missing --cov=pvcell
 
 after_success:
  - coveralls
