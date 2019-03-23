@@ -1,11 +1,7 @@
 import numpy as np
 import pandas as pd
-import sys
-sys.path.append("../")
-
-
-import seekfeatures as sf
-import processing
+from .. import seekfeatures as sf
+from .. import processing
 
 
 def test_scale_sample():
