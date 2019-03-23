@@ -1,12 +1,8 @@
 import pandas as pd
 import numpy as np
-import sys
-sys.path.append("../")
-
-
-import rrmodel
-import processing
-import seekfeatures as sf
+from .. import rrmodel
+from .. import processing
+from .. import seekfeatures as sf
 
 
 def test_rr_regress():
