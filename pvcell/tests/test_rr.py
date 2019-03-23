@@ -4,6 +4,11 @@ import sys
 sys.path.append("../")
 
 
+import rrmodel
+import processing
+import seekfeatures as sf
+
+
 def test_rr_regress():
     str = [{'SMILES_str': 'C1C=CC=C1c1cc2[se]c3c4occc4c4nsnc4c3c2cn1',
             'pce': 1},
@@ -26,9 +31,6 @@ def test_rr_regress():
            {'SMILES_str': 'C1C=CC=C1c1cc2[se]c3c4occc4c4nsnc4c3c2cn1',
             'pce': 6}]
     data = pd.DataFrame(str)
-    import rrmodel
-    import processing
-    import seekfeatures as sf
     features_df = sf.seek_feature_with_replacement(data['SMILES_str'])
     X, y = processing.scale_sample(data, features_df)
     X_train, X_test, y_train, y_test = processing.kfold_sampling(X, y, n=5)
