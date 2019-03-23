@@ -1,6 +1,6 @@
 <img src="./docs/image/PV_Cell_Logo.png" width="350" class="center">
 
-# PV_Cell
+# PVC
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![Build Status](https://travis-ci.org/sjluozho/PV_Cell.svg?branch=master)](https://travis-ci.org/sjluozho/PV_Cell)
 [![Coverage Status](https://coveralls.io/repos/github/sjluozho/PV_Cell/badge.svg?branch=master)](https://coveralls.io/github/sjluozho/PV_Cell?branch=master)
