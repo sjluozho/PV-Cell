@@ -31,7 +31,9 @@ install:
  - conda install -q keras tensorflow
 
 script: 
- - py.test --pyargs pvcell 
+ - which python
+ - python import rdkit 
+ #- py.test --pyargs pvcell 
 
 after_success:
  - coveralls
