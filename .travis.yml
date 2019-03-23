@@ -26,6 +26,7 @@ install:
  - conda create -q -n tenv python=$TRAVIS_PYTHON_VERSION pip cmake
  - source activate tenv
 
+ - pip install mordred
  - conda install -q scikit-learn numpy scipy pandas jupyter matplotlib seaborn
  - conda install -q -c rdkit rdkit
  - conda install -q keras tensorflow nose
